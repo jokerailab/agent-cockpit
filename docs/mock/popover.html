@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../src/renderer/src/styles/tokens.css">
+<link rel="stylesheet" href="../../src/renderer/src/styles/popover.css">
+<style>
+  html,body{height:100%;}
+  body{background:#ded7c4;display:flex;align-items:flex-start;justify-content:center;padding:12px 0;}
+  .wrap{width:400px;}
+</style>
+</head>
+<body class="pop-body">
+  <div class="wrap">
+    <div class="pop">
+      <header class="pop__head">
+        <span class="pop__brand">Agent Cockpit</span>
+        <button type="button">Open main window ↗</button>
+      </header>
+
+      <div class="pop__totals">
+        <span><b>8</b> processes</span>
+        <span><b>34</b><i>% CPU</i></span>
+        <span><b>12</b><i>% memory</i></span>
+        <span><b>3</b> ports</span>
+        <span class="is-alert"><b>2</b> alerts</span>
+      </div>
+
+      <div class="pop__convoline">
+        <span class="pop__cvbadge pop__cvbadge--working">2 working</span>
+        <span class="pop__cvbadge pop__cvbadge--awaiting">3 awaiting</span>
+        <span class="pop__spend" title="Equivalent API spend today (estimated)">Today ≈$12.40</span>
+      </div>
+
+      <div class="pop__section">Awaiting you · 3 <span class="pop__section-hint">longest 18m</span></div>
+      <div class="pop__await" style="--accent:var(--agent-claude)">
+        <span class="pop__dot"></span>
+        <span class="pop__aname">checkout-service</span>
+        <span class="pop__astat">Add coupon validation to the cart</span>
+        <span class="pop__await-wait">18m</span>
+      </div>
+      <div class="pop__await" style="--accent:var(--agent-claude)">
+        <span class="pop__dot"></span>
+        <span class="pop__aname">landing-redesign</span>
+        <span class="pop__astat">Rework the hero section</span>
+        <span class="pop__await-wait">9m</span>
+      </div>
+      <div class="pop__await" style="--accent:var(--agent-codex)">
+        <span class="pop__dot"></span>
+        <span class="pop__aname">api-gateway</span>
+        <span class="pop__astat">Add a rate-limiting middleware</span>
+        <span class="pop__await-wait">2m</span>
+      </div>
+
+      <div class="pop__quotas">
+        <div class="pop__quota">
+          <span class="pop__qname">claude</span>
+          <span class="pop__qwin">5h<i class="pop__qbar pop__qbar--warn"><em style="width:62%"></em></i>62% ↻1h48</span>
+          <span class="pop__qwin">7d<i class="pop__qbar pop__qbar--ok"><em style="width:41%"></em></i>41%</span>
+        </div>
+      </div>
+
+      <div class="pop__section">Active agents</div>
+      <div class="pop__agent" style="--accent:var(--agent-claude)">
+        <span class="pop__dot"></span>
+        <span class="pop__aname">Claude Code</span>
+        <span class="pop__astat">3p · 41% · 4 sessions</span>
+      </div>
+      <div class="pop__agent" style="--accent:var(--agent-codex)">
+        <span class="pop__dot"></span>
+        <span class="pop__aname">Codex</span>
+        <span class="pop__astat">1p · 6% · 1 session</span>
+      </div>
+
+      <div class="pop__section">Alerts 2</div>
+      <div class="pop__alert pop__alert--critical">
+        <span class="pop__adot"></span>
+        <span class="pop__atitle">Session degraded 0</span>
+        <span class="pop__acat">Session health</span>
+      </div>
+      <div class="pop__alert pop__alert--warn">
+        <span class="pop__adot"></span>
+        <span class="pop__atitle">Burning ≈$9.6/min</span>
+        <span class="pop__acat">Burn</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

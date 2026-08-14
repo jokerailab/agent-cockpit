@@ -1,0 +1,62 @@
+name: Bug report
+description: Something behaves incorrectly
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Please do not paste session logs.** `~/.claude/projects/**.jsonl` files
+        contain your full conversations. The score, diagnosis and turn count shown
+        in the UI are almost always enough to diagnose a parsing issue.
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you expected, and what you got instead.
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open the session audit
+        2. …
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: OS and version
+      placeholder: macOS 15.3 (arm64)
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Agent Cockpit version
+      description: Shown in the header, or `Agent Cockpit → About`.
+      placeholder: 0.3.0
+    validations:
+      required: true
+
+  - type: input
+    id: agents
+    attributes:
+      label: Which agents are installed
+      placeholder: Claude Code 2.1.0, Codex, Cursor
+
+  - type: dropdown
+    id: source
+    attributes:
+      label: How did you install it
+      options:
+        - Downloaded the dmg from Releases
+        - Built from source
+        - Running npm run dev
+    validations:
+      required: true

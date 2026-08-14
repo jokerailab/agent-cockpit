@@ -1,0 +1,69 @@
+{
+  "name": "agent-cockpit",
+  "version": "0.3.0",
+  "description": "Observability for your local AI coding agents: session health scoring, live process monitoring, cost and quota tracking.",
+  "author": "乔氪智造 (Joker AI Lab) <@jokerailab>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jokerailab/agent-cockpit.git"
+  },
+  "homepage": "https://github.com/jokerailab/agent-cockpit#readme",
+  "bugs": {
+    "url": "https://github.com/jokerailab/agent-cockpit/issues"
+  },
+  "keywords": [
+    "claude-code",
+    "codex",
+    "ai-agent",
+    "coding-agent",
+    "observability",
+    "session-health",
+    "electron",
+    "devtools",
+    "menubar"
+  ],
+  "main": "./out/main/index.js",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "rebuild": "electron-rebuild -f -w better-sqlite3",
+    "build": "electron-vite build",
+    "preview": "electron-vite preview",
+    "typecheck:node": "tsc -p tsconfig.node.json --noEmit",
+    "typecheck:web": "tsc -p tsconfig.web.json --noEmit",
+    "typecheck": "npm run typecheck:node && npm run typecheck:web",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check:i18n": "node scripts/check-i18n.mjs",
+    "verify": "npm run typecheck && npm run check:i18n && npm test",
+    "dist:mac": "electron-vite build && electron-builder --mac",
+    "dist:win": "electron-vite build && electron-builder --win",
+    "dist:linux": "electron-vite build && electron-builder --linux",
+    "release:mac": "bash scripts/release-mac.sh",
+    "pack:app": "bash scripts/run-packaged.sh",
+    "t": "bash scripts/run.sh"
+  },
+  "devDependencies": {
+    "@electron/rebuild": "^4.0.4",
+    "@fontsource/archivo": "^5.2.8",
+    "@fontsource/instrument-serif": "^5.2.8",
+    "@fontsource/space-mono": "^5.2.9",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^25.9.3",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^4.7.0",
+    "electron": "^42.4.0",
+    "electron-builder": "^26.15.3",
+    "electron-vite": "^5.0.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "typescript": "^6.0.3",
+    "vite": "^7.3.5",
+    "vitest": "^3.2.7"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.11.1",
+    "systeminformation": "^5.31.7"
+  }
+}

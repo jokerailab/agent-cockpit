@@ -1,0 +1,80 @@
+/**
+ * Agent Cockpit — design tokens.
+ * Aesthetic: "analog instrument spec-sheet" — warm paper, ink, safety-orange signal,
+ * blueprint hairlines, serif display + technical mono telemetry.
+ */
+:root {
+  /* paper ramp (warm bone → elevated card) */
+  --paper-0: #e4ddca; /* deepest, behind frame */
+  --paper-1: #ece5d3; /* base field */
+  --paper-2: #f3eddd; /* raised panel */
+  --paper-3: #f8f4e8; /* highest card */
+
+  /* ink ramp */
+  --ink: #1b1710;
+  --ink-2: #4a4234;
+  --ink-3: #756a55;
+  --ink-4: #a89c82;
+
+  /* hairlines / borders */
+  --line: rgba(27, 23, 16, 0.16);
+  --line-2: rgba(27, 23, 16, 0.32);
+  --line-ink: rgba(27, 23, 16, 0.85);
+
+  /* signal — safety instrument orange */
+  --signal: #e23a0f;
+  --signal-deep: #b62c09;
+  --signal-wash: rgba(226, 58, 15, 0.1);
+
+  /* status */
+  --ok: #2f7d52;
+  --warn: #c2820a;
+  --danger: #e23a0f;
+  --ok-wash: rgba(47, 125, 82, 0.12);
+  --warn-wash: rgba(194, 130, 10, 0.14);
+
+  /* token-composition segment colors */
+  --tok-cacher: #6b8fb5; /* cache read — muted blue */
+  --tok-cachew: #c2820a; /* cache write — amber */
+  --tok-in: #2f7d52; /* input — green */
+  --tok-out: #9b6bd0; /* output — violet */
+
+  /* per-agent accents — muted jewel tones tuned to paper */
+  --agent-codex: #4b3b8f;
+  --agent-claude: #b5532e;
+  --agent-gemini: #1f6f8f;
+  --agent-antigravity: #4a6b2f;
+  --agent-unknown: #6a6358;
+
+  /* type */
+  --font-display: "Instrument Serif", Georgia, "Songti SC", serif;
+  --font-ui: "Archivo", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --font-mono: "Space Mono", "SF Mono", Menlo, monospace;
+
+  --fs-micro: 10px;
+  --fs-xs: 11px;
+  --fs-sm: 12px;
+  --fs-md: 13px;
+  --fs-lg: 16px;
+  --fs-xl: 22px;
+  --fs-display: 40px;
+  --fs-giant: 64px;
+
+  /* tracking */
+  --track-mono: 0.14em;
+  --track-label: 0.22em;
+
+  /* spacing */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 36px;
+  --s-7: 56px;
+
+  /* misc */
+  --frame-pad: 14px;
+  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 12px 30px -18px rgba(27, 23, 16, 0.45);
+}

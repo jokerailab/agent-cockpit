@@ -1,0 +1,45 @@
+name: Feature request
+description: Suggest a capability or a change to the health model
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem are you hitting
+      description: >
+        Describe the situation, not the solution. What did you want to know or do
+        that the app didn't tell you?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What you'd like instead
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Session health model
+        - Notifications / alerts
+        - Cost and quota
+        - Process monitoring
+        - Agent discovery
+        - UI / UX
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: session
+    attributes:
+      label: If this is about the health model, what was the session doing
+      description: >
+        A misfiring rule is much easier to fix with a description of the real
+        session — how many turns, roughly what the agent was doing, what the score
+        and diagnosis said. See docs/HEALTH-MODEL.md for the current rules.
+        Please don't attach the log file itself.

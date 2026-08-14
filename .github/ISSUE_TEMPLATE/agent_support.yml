@@ -1,0 +1,65 @@
+name: Agent support request
+description: Ask for detection of an agent that isn't recognised yet
+labels: [agent-support]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Detection is declarative, so this is usually a small change — and you can
+        make it yourself in about five minutes:
+        [docs/ADDING-AN-AGENT.md](https://github.com/jokerailab/agent-cockpit/blob/main/docs/ADDING-AN-AGENT.md).
+
+        If you'd rather someone else do it, the fields below are what's needed.
+
+  - type: input
+    id: name
+    attributes:
+      label: Agent name and vendor
+      placeholder: My Tool (Acme)
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: Homepage or repo
+    validations:
+      required: true
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind
+      options: [CLI, IDE, IDE extension, Framework]
+    validations:
+      required: true
+
+  - type: input
+    id: bin
+    attributes:
+      label: Binary name on PATH
+      description: What you type to launch it, if anything.
+      placeholder: mytool
+
+  - type: textarea
+    id: paths
+    attributes:
+      label: Config directory or files
+      description: Run `ls -d ~/.* | grep -i <tool>` if unsure.
+      placeholder: |
+        ~/.mytool/
+        ~/.config/mytool/config.json
+        /Applications/My Tool.app
+
+  - type: input
+    id: version
+    attributes:
+      label: Version command and its output
+      placeholder: "mytool --version → mytool 1.4.2"
+
+  - type: input
+    id: procname
+    attributes:
+      label: Process name while running
+      description: From `ps aux | grep -i <tool>`. Note if it runs as node/python.
+      placeholder: node /usr/local/lib/mytool/cli.js

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../src/renderer/src/styles/tokens.css">
+<link rel="stylesheet" href="../../src/renderer/src/styles/app.css">
+<style>
+  html,body{height:100%;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(130% 90% at 82% -12%, var(--paper-3), transparent 58%),
+      radial-gradient(100% 70% at 12% 110%, var(--paper-2), transparent 60%),
+      var(--paper-1);
+    display:flex;align-items:center;justify-content:center;
+  }
+  /* static render — neutralize the modal's fade/blur for a clean shot */
+  .modal{position:static;background:transparent;backdrop-filter:none;padding:22px;}
+</style>
+</head>
+<body>
+  <div class="modal">
+    <div class="modal__panel modal__panel--wide">
+      <div class="modal__head">
+        <h2>Session Audit</h2>
+        <button type="button">✕</button>
+      </div>
+      <p class="audit__lead">Health of Claude sessions from the last 45 days (up to 150, newest first), worst first · scanned 42, 5 need attention</p>
+      <label class="audit__filter"><input type="checkbox" checked> Only show what needs attention</label>
+      <div class="audit__list">
+
+        <div class="audit__row audit__row--degrading">
+          <span class="audit__score">52</span>
+          <div class="audit__mid">
+            <div class="audit__proj"><span class="audit__live">Live</span> checkout-service <em>claude</em></div>
+            <div class="audit__diag">Context window tight</div>
+            <div class="audit__advice">Advice · Context tight · try /compact, then hand over if that is not enough</div>
+          </div>
+          <div class="audit__meta"><span>2.4MB</span><span>96 turns</span><span>CTX 87%</span><span>just now</span></div>
+        </div>
+
+        <div class="audit__row audit__row--failing">
+          <span class="audit__score">0</span>
+          <div class="audit__mid">
+            <div class="audit__proj">weather-app <em>claude</em></div>
+            <div class="audit__diag">Repetition loop (same token ×8420)</div>
+            <div class="audit__advice">Advice · Beyond saving · hand over to a fresh session with the original task and files; archive this one</div>
+          </div>
+          <div class="audit__meta"><span>21.6MB</span><span>3180 turns</span><span>CTX 100%</span><span>12m</span></div>
+        </div>
+
+        <div class="audit__row audit__row--failing">
+          <span class="audit__score">30</span>
+          <div class="audit__mid">
+            <div class="audit__proj">blog-cms <em>claude</em></div>
+            <div class="audit__diag">Spinning badly (most replies produce no output)</div>
+            <div class="audit__advice">Advice · Beyond saving · hand over to a fresh session with the original task and files; archive this one</div>
+          </div>
+          <div class="audit__meta"><span>8.9MB</span><span>540 turns</span><span>CTX 100%</span><span>1h22m ago</span></div>
+        </div>
+
+        <div class="audit__row audit__row--failing">
+          <span class="audit__score">35</span>
+          <div class="audit__mid">
+            <div class="audit__proj">payments-api <em>codex</em></div>
+            <div class="audit__diag">Context window exhausted</div>
+            <div class="audit__advice">Advice · Context full · start fresh and carry over the task plus key files</div>
+          </div>
+          <div class="audit__meta"><span>11.2MB</span><span>720 turns</span><span>CTX 100%</span><span>3h ago</span></div>
+        </div>
+
+        <div class="audit__row audit__row--degrading">
+          <span class="audit__score">58</span>
+          <div class="audit__mid">
+            <div class="audit__proj">design-tokens <em>claude</em></div>
+            <div class="audit__diag">Frequent tool errors (22%)</div>
+            <div class="audit__advice">Advice · Frequent errors · check environment and permissions first</div>
+          </div>
+          <div class="audit__meta"><span>3.1MB</span><span>210 turns</span><span>CTX 64%</span><span>5h ago</span></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>

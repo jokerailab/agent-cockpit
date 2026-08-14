@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../src/renderer/src/styles/tokens.css">
+<link rel="stylesheet" href="../../src/renderer/src/styles/app.css">
+<style>
+  html,body{height:100%;}
+  body{
+    margin:0; padding:26px;
+    background:
+      radial-gradient(130% 90% at 82% -12%, var(--paper-3), transparent 58%),
+      radial-gradient(100% 70% at 12% 110%, var(--paper-2), transparent 60%),
+      var(--paper-1);
+  }
+  .col{display:flex;flex-direction:column;gap:14px;width:452px;margin:0 auto;}
+  .sess{animation:none;opacity:1;}
+</style>
+</head>
+<body>
+  <div class="col">
+
+    <article class="sess sess--working" style="--accent:var(--agent-claude)">
+      <div class="sess__top">
+        <span class="sess__dot"></span>
+        <span class="sess__proj">weather-app</span>
+        <span class="sess__act sess__act--working">Working</span>
+        <span class="sess__agent">claude</span>
+        <span class="sess__git">⎇ main <em>+7</em></span>
+      </div>
+      <div class="sess__health sess__health--failing">
+        <b>0</b>
+        <span>Session degraded · Repetition loop (same token ×8420)</span>
+        <em>Restart advised</em>
+      </div>
+      <p class="sess__task">Make the weather cards wrap correctly on mobile</p>
+      <div class="sess__bar sess__bar--danger">
+        <span style="width:100%"></span>
+        <i class="sess__warn">Compaction near</i>
+      </div>
+      <div class="sess__ctxline">
+        CTX <b>100%</b> · 195k/200k
+        <span class="sess__rate">4.2k/min</span>
+        <span class="sess__burn">🔥 $9.6/min</span>
+      </div>
+      <div class="tok">
+        <div class="tok__bar">
+          <span style="width:71%;background:var(--tok-cacher)"></span>
+          <span style="width:14%;background:var(--tok-cachew)"></span>
+          <span style="width:6%;background:var(--tok-in)"></span>
+          <span style="width:9%;background:var(--tok-out)"></span>
+        </div>
+        <div class="tok__legend">
+          <span><i style="background:var(--tok-cacher)"></i>cache R <b>14.2M</b></span>
+          <span><i style="background:var(--tok-cachew)"></i>cache W <b>2.8M</b></span>
+          <span><i style="background:var(--tok-in)"></i>in <b>1.1M</b></span>
+          <span><i style="background:var(--tok-out)"></i>out <b>1.9M</b></span>
+        </div>
+      </div>
+      <div class="sess__foot2">
+        <span>↻ 3180 turns</span>
+        <span>Σ 20.0M</span>
+        <span class="sess__cost">≈$182</span>
+        <button type="button" class="sess__disk">Project size <i>▸</i></button>
+        <span class="sess__ago">12m ago</span>
+      </div>
+    </article>
+
+    <article class="sess sess--working" style="--accent:var(--agent-claude)">
+      <div class="sess__top">
+        <span class="sess__dot"></span>
+        <span class="sess__proj">checkout-service</span>
+        <span class="sess__act sess__act--working">Working</span>
+        <span class="sess__agent">claude</span>
+        <span class="sess__git">⎇ feat/coupons <em>+3</em></span>
+      </div>
+      <div class="sess__health sess__health--degrading">
+        <b>52</b>
+        <span>Borderline · Context window tight</span>
+        <em>Watch</em>
+      </div>
+      <p class="sess__task">Add coupon validation to the cart</p>
+      <div class="sess__bar sess__bar--danger">
+        <span style="width:87%"></span>
+        <i class="sess__warn">Compaction near</i>
+      </div>
+      <div class="sess__ctxline">
+        CTX <b>87%</b> · 174k/200k
+        <span class="sess__rate">2.6k/min</span>
+        <span class="sess__burn">🔥 $3.2/min</span>
+      </div>
+      <div class="tok">
+        <div class="tok__bar">
+          <span style="width:64%;background:var(--tok-cacher)"></span>
+          <span style="width:16%;background:var(--tok-cachew)"></span>
+          <span style="width:8%;background:var(--tok-in)"></span>
+          <span style="width:12%;background:var(--tok-out)"></span>
+        </div>
+        <div class="tok__legend">
+          <span><i style="background:var(--tok-cacher)"></i>cache R <b>3.1M</b></span>
+          <span><i style="background:var(--tok-cachew)"></i>cache W <b>780k</b></span>
+          <span><i style="background:var(--tok-in)"></i>in <b>410k</b></span>
+          <span><i style="background:var(--tok-out)"></i>out <b>560k</b></span>
+        </div>
+      </div>
+      <div class="sess__foot2">
+        <span>↻ 96 turns</span>
+        <span>Σ 4.8M</span>
+        <span class="sess__cost">≈$41</span>
+        <button type="button" class="sess__disk">Project size <i>▸</i></button>
+        <span class="sess__ago">just now</span>
+      </div>
+    </article>
+
+    <article class="sess sess--awaiting" style="--accent:var(--agent-codex)">
+      <div class="sess__top">
+        <span class="sess__dot"></span>
+        <span class="sess__proj">landing-redesign</span>
+        <span class="sess__act sess__act--awaiting">Awaiting you</span>
+        <span class="sess__agent">codex</span>
+        <span class="sess__git">⎇ main</span>
+      </div>
+      <p class="sess__task">Make the hero section responsive</p>
+      <div class="sess__bar sess__bar--ok">
+        <span style="width:42%"></span>
+      </div>
+      <div class="sess__ctxline">
+        CTX <b>42%</b> · 114k/272k
+      </div>
+      <div class="tok">
+        <div class="tok__bar">
+          <span style="width:58%;background:var(--tok-cacher)"></span>
+          <span style="width:12%;background:var(--tok-cachew)"></span>
+          <span style="width:14%;background:var(--tok-in)"></span>
+          <span style="width:16%;background:var(--tok-out)"></span>
+        </div>
+        <div class="tok__legend">
+          <span><i style="background:var(--tok-cacher)"></i>cache R <b>820k</b></span>
+          <span><i style="background:var(--tok-cachew)"></i>cache W <b>170k</b></span>
+          <span><i style="background:var(--tok-in)"></i>in <b>200k</b></span>
+          <span><i style="background:var(--tok-out)"></i>out <b>230k</b></span>
+        </div>
+      </div>
+      <div class="sess__foot2">
+        <span>↻ 34 turns</span>
+        <span>Σ 1.4M</span>
+        <span class="sess__cost">≈$4.80</span>
+        <button type="button" class="sess__disk">Project size <i>▸</i></button>
+        <span class="sess__ago">3m ago</span>
+      </div>
+    </article>
+
+  </div>
+</body>
+</html>

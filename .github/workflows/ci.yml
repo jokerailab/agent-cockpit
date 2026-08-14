@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: verify (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        # Windows has never been verified by hand and better-sqlite3 needs
+        # node-gyp there; don't let it block a PR until it has proven stable.
+        include:
+          - os: windows-latest
+            experimental: true
+    continue-on-error: ${{ matrix.experimental || false }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      # better-sqlite3 is a native module compiled on install
+      - run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: i18n guard
+        run: npm run check:i18n
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Build all three processes
+        run: npm run build

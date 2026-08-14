@@ -1,0 +1,67 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing tag to build and attach artifacts to
+        required: true
+
+jobs:
+  macos:
+    name: macOS dmg
+    runs-on: macos-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.tag || github.ref }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      # gate the release on the same checks as CI
+      - run: npm run verify
+
+      - name: Build dmg (arm64 + x64, ad-hoc signed)
+        env:
+          # no Developer ID certificate: electron-builder falls back to an
+          # ad-hoc deep sign via scripts/adhoc-sign.cjs
+          CSC_IDENTITY_AUTO_DISCOVERY: "false"
+        run: npx electron-builder --mac --publish never
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.inputs.tag || github.ref_name }}
+          draft: true
+          files: |
+            release/*.dmg
+            release/*.blockmap
+          body: |
+            ## Install
+
+            Download the `.dmg` for your Mac, open it, drag Agent Cockpit to
+            Applications.
+
+            - `arm64` — Apple Silicon (M-series)
+            - `x64` — Intel
+
+            This build is **ad-hoc signed, not notarised**, so macOS blocks it on
+            first launch. That is expected:
+
+            1. Double-click the app. macOS says it "cannot be verified".
+            2. Open **System Settings → Privacy & Security** and scroll down.
+            3. Find Agent Cockpit and click **Open Anyway**.
+
+            Once, not every launch. Prefer to build it yourself?
+            `npm install && npm run dist:mac`.
+
+            Agent Cockpit makes no network requests: see
+            [PRIVACY.md](https://github.com/jokerailab/agent-cockpit/blob/main/PRIVACY.md).

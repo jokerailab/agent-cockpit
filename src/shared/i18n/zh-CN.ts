@@ -1,0 +1,255 @@
+/**
+ * 简体中文词典。
+ *
+ * 键集由 en.ts 决定：这里少一条就编译不过，多一条也编译不过。
+ * 原文案沿用重构前的表述，不做润色，避免行为观感变化。
+ */
+import type { I18nKey } from "./en";
+
+export const zhCN: Record<I18nKey, string> = {
+  /* ── 通用 ─────────────────────────────────────────────────── */
+  "common.dash": "—",
+  "common.confirm": "确认?",
+  "common.clear": "清除",
+  "common.unset": "未设置",
+  "common.scanning": "扫描中…",
+  "common.turns": "{n} 轮",
+  "common.sessions": "会话",
+  "common.session": "会话",
+
+  /* ── 时间 ─────────────────────────────────────────────────── */
+  "time.ago": "{v} 前",
+  "time.justNow": "刚刚",
+  "time.minutes": "{m}分",
+  "time.hoursMinutes": "{h}时{m}分",
+  "time.resetting": "重置中",
+
+  /* ── 会话活动状态 ─────────────────────────────────────────── */
+  "activity.working": "进行中",
+  "activity.awaiting": "待输入",
+  "activity.idle": "空闲",
+
+  /* ── agent 类型 ───────────────────────────────────────────── */
+  "agent.kind.cli": "CLI",
+  "agent.kind.ide": "IDE",
+  "agent.kind.ide-ext": "插件",
+  "agent.kind.framework": "框架",
+
+  /* ── 健康诊断（见 docs/HEALTH-MODEL.md）───────────────────── */
+  "health.diag.contextBlown": "上下文撑爆",
+  "health.diag.contextTight": "上下文吃紧",
+  "health.diag.spinningBad": "空转严重（多数回复无输出）",
+  "health.diag.spinning": "空转（部分回复无输出）",
+  "health.diag.degenerate": "复读退化（同词 ×{run}）",
+  "health.diag.stalled": "反复催“继续”（卡死 ×{count}）",
+  "health.diag.errorProne": "报错频繁（{pct}%）",
+  "health.diag.churning": "反复压缩（{count} 次，上下文抖动）",
+  "health.diag.bloated": "体积臃肿",
+  "health.diag.tooManyTurns": "轮次过多",
+  "health.diag.healthy": "健康",
+  "health.diag.lowScore": "健康度过低",
+
+  /* ── 处理建议 ─────────────────────────────────────────────── */
+  "health.advice.unsalvageable": "已不可救 · 开新会话交接（带上原始任务与涉及文件），旧会话归档勿删",
+  "health.advice.contextBlown": "上下文已满 · 别在此续，开新会话把当前任务+关键文件带过去",
+  "health.advice.contextTight": "上下文吃紧 · 先试 /compact 压缩，不行再开新会话交接",
+  "health.advice.stalled": "疑似卡死 · 中断后开新会话交接继续",
+  "health.advice.errorProne": "报错频繁 · 先查环境/权限，仍不行则开新会话",
+  "health.advice.failing": "已不健康 · 建议开新会话交接、旧会话归档",
+  "health.advice.degrading": "亚健康 · 留意，必要时 /compact 或交接",
+
+  /* ── 会话体检面板 ─────────────────────────────────────────── */
+  "audit.title": "会话体检",
+  "audit.lead": "扫近 45 天 Claude 会话（最多 150 个，最新优先）健康度，按最差排序",
+  "audit.leadCount": " · 扫了 {total} 个，{bad} 个需处理",
+  "audit.onlyBad": "只看需处理",
+  "audit.scanning": "扫描中…（首次较慢）",
+  "audit.empty": "没有需要处理的会话 🎉",
+  "audit.live": "进行中",
+  "audit.advice": "建议 · {text}",
+
+  /* ── 会话卡片 ─────────────────────────────────────────────── */
+  "session.healthTitle": "会话健康度",
+  "session.degraded": "会话已退化",
+  "session.borderline": "亚健康",
+  "session.actionRestart": "建议重开",
+  "session.actionWatch": "留意",
+  "session.compactionNear": "压缩临近",
+  "session.burnTitle": "等价 API 燃烧速率（估算）",
+  "session.costTitle": "等价 API 成本（按公开单价估算）",
+  "session.projectSize": "项目 {size}",
+  "session.projectSizeIdle": "项目体积",
+  "session.diskEmpty": "目录为空或无法读取",
+  "session.diskError": "扫描失败：{error}",
+  "session.noneActive": "仅后台进程 · 无活跃会话",
+  "session.noIntrospection": "仅进程级监控 · 暂不支持会话内省",
+  "session.awaitingCount": "{n} 待输入",
+  "session.awaitingTitle": "{n} 个对话等你回复",
+
+  /* ── 成本口径 ─────────────────────────────────────────────── */
+  "cost.actual": "实际花费",
+  "cost.equivalent": "等价价值",
+  "cost.estimated": "估算",
+  "cost.planLine": "套餐 {plan}/月 · 边际≈0",
+  "cost.planIncluded": "套餐内",
+  "cost.atPublishedRates": "按公开单价",
+
+  /* ── 花费条 ───────────────────────────────────────────────── */
+  "spend.today": "今日",
+  "spend.week": "本周",
+  "spend.month": "本月",
+  "spend.payback": "{name} 回本",
+  "spend.paybackTitle": "本月等价 {spent} / 套餐 {plan}",
+  "spend.note": "等价 API · 按公开单价估算",
+
+  /* ── 仪表盘 ───────────────────────────────────────────────── */
+  "stat.procs": "活跃进程",
+  "stat.cpu": "CPU",
+  "stat.mem": "内存",
+  "stat.ports": "监听端口",
+  "stat.alerts": "待处理告警",
+  "cluster.note": "实时总览",
+
+  /* ── 告警 ─────────────────────────────────────────────────── */
+  "alert.cat.context": "上下文",
+  "alert.cat.quota": "限额",
+  "alert.cat.resource": "资源",
+  "alert.cat.port": "端口",
+  "alert.cat.security": "安全",
+  "alert.cat.burn": "燃烧",
+  "alert.cat.health": "会话健康",
+  "alert.note": "{open} 待处理 / {total} 全部",
+
+  "alert.context.title": "上下文 {pct}%",
+  "alert.context.detail": "{project} · 即将自动压缩，注意保存上下文",
+  "alert.burn.title": "燃烧 ≈${rate}/min",
+  "alert.burn.detail": "{project} · 等价 API 速率偏高（累计 ≈${total}）",
+  "alert.health.title": "会话已退化 {score}",
+  "alert.health.detail": "{project} · {diag} — 建议开新会话",
+  "alert.quota.title": "{source} {window} 限额 {pct}%",
+  "alert.quota.detail": "即将触发限流",
+  "alert.cpu.title": "进程 CPU {pct}%",
+  "alert.cpu.detail": "pid {pid} {command} 持续高占用",
+  "alert.mem.title": "进程内存 {pct}%",
+  "alert.mem.detail": "pid {pid} {command}",
+  "alert.orphan.title": "孤儿端口 :{port}",
+  "alert.orphan.detail": "{process} (pid {pid}) 可能是遗留的服务",
+  "alert.sec.claudeBash.title": "Claude 宽权限",
+  "alert.sec.claudeBash.detail": "permissions.allow 含 “{rule}” — Bash 全量放行，注意审查",
+  "alert.sec.geminiTrust.title": "Gemini 信任目录偏多",
+  "alert.sec.geminiTrust.detail": "{count} 个 trusted folders",
+
+  /* ── 系统通知 ─────────────────────────────────────────────── */
+  "notify.awaiting.title": "✋ 待你回复 · {project}",
+  "notify.awaiting.body": "{agent} 完成这轮：{task}",
+  "notify.awaiting.bodyNoTask": "{agent} 完成这轮，在等你",
+
+  /* ── 应用菜单与托盘 ───────────────────────────────────────── */
+  "menu.settings": "设置…",
+  "menu.quit": "退出 Agent Cockpit",
+  "menu.actions": "操作",
+  "menu.rescan": "重新扫描 Agent",
+  "menu.toggleMonitor": "暂停/恢复监控",
+  "menu.edit": "编辑",
+  "menu.view": "视图",
+  "tray.open": "打开 Cockpit",
+  "tray.rescan": "重新扫描",
+  "tray.quit": "退出",
+  "tray.tooltip": "Agent Cockpit · {procs} 进程 · {cpu}% CPU · {alerts} 告警",
+
+  /* ── 设置 ─────────────────────────────────────────────────── */
+  "settings.title": "设置",
+  "settings.sec.collection": "采集",
+  "settings.sec.desktop": "桌面",
+  "settings.sec.notifications": "通知",
+  "settings.sec.billing": "计费",
+  "settings.sec.integrations": "集成",
+  "settings.sec.thresholds": "告警阈值",
+  "settings.language": "语言",
+  "settings.language.auto": "跟随系统",
+  "settings.pollInterval": "轮询间隔",
+  "settings.autoLaunch": "开机自启",
+  "settings.globalShortcut": "全局快捷键",
+  "settings.shortcutPlaceholder": "点击后按下组合键",
+  "settings.notifyEnabled": "系统通知",
+  "settings.notifyLevel": "通知级别",
+  "settings.notifyLevel.warn": "警告及以上",
+  "settings.notifyLevel.critical": "仅严重",
+  "settings.notifyAwaiting": "agent 等你回复时通知",
+  "settings.contextWarn": "上下文预警",
+  "settings.quotaWarn": "限额预警",
+  "settings.cpuWarn": "进程 CPU 预警",
+  "settings.memWarn": "进程内存预警",
+  "settings.burnWarn": "燃烧速率预警",
+
+  /* ── 计费模式 ─────────────────────────────────────────────── */
+  "billing.unknown": "估算",
+  "billing.api": "API 按量",
+  "billing.subscription": "订阅套餐",
+  "billing.planPlaceholder": "$/月",
+
+  /* ── Claude 限额 hook ─────────────────────────────────────── */
+  "hook.label": "Claude 限额监控",
+  "hook.state.loading": "检测中…",
+  "hook.state.ok": "已接入 · 限额上报中",
+  "hook.state.wired": "已接入 · 等待 Claude 刷新",
+  "hook.state.conflict": "你已有自定义状态栏",
+  "hook.state.none": "未接入",
+  "hook.action.install": "一键接入",
+  "hook.action.rewrite": "重写脚本",
+  "hook.msg.installed": "已接入。下次 Claude 刷新状态栏后开始上报限额。",
+  "hook.msg.conflict": "检测到你已有自定义 statusLine，已写入脚本但未覆盖它。需手动接入。",
+  "hook.err.generic": "安装失败",
+  "hook.err.noClaudeDir": "~/.claude 不存在，未检测到 Claude",
+  "hook.err.writeScript": "写入脚本失败",
+  "hook.err.writeSettings": "写入 settings.json 失败",
+
+  /* ── 主界面 ───────────────────────────────────────────────── */
+  "deck.subtitle": "本机 Agent 实时运维台 · Local Telemetry Deck",
+  "deck.telemetry.awaiting": "待你",
+  "deck.audit": "会话体检",
+  "deck.settings": "设置",
+  "deck.fleet.note": "识别 {found} / 探测 {scanned}",
+  "deck.fleet.scanning": "自动扫描本机…",
+  "deck.fleet.empty": "未发现已安装的 Agent",
+  "deck.rescan": "重新扫描",
+  "deck.rescanning": "扫描中",
+  "deck.idle": "闲置",
+  "deck.runtime.note": "{procs} 进程 · 每 {interval}s",
+  "deck.runtime.connecting": "连接监控…",
+  "deck.pause": "⏸ 暂停",
+  "deck.resume": "▶ 继续",
+  "deck.empty.title": "暂无运行中的 Agent",
+  "deck.empty.body":
+    "当前没有检测到任何已识别 Agent 的活动进程。启动一个 Agent 后，进程树与资源趋势会实时出现在这里。",
+  "deck.connecting.title": "连接实时监控…",
+  "deck.idleAgents": "空闲 {names}",
+  "deck.orphanTitle": "kill 所有遗留的 dev server 进程树",
+  "deck.orphanClean": "清理孤儿 dev server ({n})",
+  "deck.orphanConfirm": "确认清理 {n}?",
+  "deck.orphanPortTitle": "{process} · 可能遗留的 dev server",
+  "deck.procFilter": "过滤 pid / 命令 / agent",
+  "deck.quotaSetup": "限额未配置 · 启用",
+  "deck.killTree": "kill tree",
+  "deck.kill": "kill",
+
+  /* ── 菜单栏 popover ───────────────────────────────────────── */
+  "pop.openMain": "打开主窗 ↗",
+  "pop.procs": "进程",
+  "pop.cpu": "% CPU",
+  "pop.mem": "% 内存",
+  "pop.ports": "端口",
+  "pop.alerts": "告警",
+  "pop.working": "{n} 进行中",
+  "pop.awaiting": "{n} 待输入",
+  "pop.todaySpend": "今日 ≈{amount}",
+  "pop.todaySpendTitle": "今日等价 API 花费（估算）",
+  "pop.awaitingSection": "待你回复 · {n}",
+  "pop.longestWait": "最久 {wait}",
+  "pop.activeAgents": "活跃 Agent",
+  "pop.noAgents": "无活跃 Agent",
+  "pop.alertsSection": "告警 {n}",
+  "pop.sessionsSuffix": "会话",
+  "pop.cleanOrphans": "清理孤儿 dev server ({n})",
+  "pop.cleanOrphansConfirm": "确认清理 {n} 个?"
+};

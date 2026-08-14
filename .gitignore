@@ -1,0 +1,24 @@
+node_modules/
+out/
+dist/
+release/
+*.log
+.DS_Store
+.vite/
+*.tsbuildinfo
+
+# distribution artifacts — shipped via GitHub Releases, never committed
+dist-share/
+*.dmg
+*.blockmap
+
+# 2MB icon master; generated assets live in build/
+icon-source.png
+
+# local agent/editor state
+.claude/settings.local.json
+
+# icon build intermediates — icon.icns/.ico/.png are the shipped artifacts;
+# the iconset dir and the 1024 duplicate are only inputs to iconutil
+build/icon.iconset/
+build/icon-1024.png

@@ -1,0 +1,57 @@
+appId: io.github.jokerailab.agentcockpit
+productName: Agent Cockpit
+directories:
+  buildResources: build
+  output: release
+files:
+  - out/**
+  - "!**/*.map"
+# pack into asar, but native .node modules must live outside it to load
+asar: true
+asarUnpack:
+  - "**/*.node"
+  - "**/node_modules/better-sqlite3/**"
+# rebuild native deps (better-sqlite3) against the target Electron ABI
+npmRebuild: true
+# trim shipped locale paks → keep only English + Simplified Chinese
+electronLanguages:
+  - en
+  - zh_CN
+compression: maximum
+# ad-hoc deep-sign the bundle (no Developer ID) so it isn't flagged "damaged"
+afterPack: scripts/adhoc-sign.cjs
+mac:
+  category: public.app-category.developer-tools
+  # no Developer ID cert → electron-builder falls back to a full ad-hoc sign
+  # (seals app.asar too, so the bundle isn't "damaged"). Users still do a
+  # one-time System Settings → Privacy & Security → "Open Anyway".
+  target:
+    - target: dmg
+      arch:
+        - arm64
+        - x64
+  artifactName: ${productName}-${version}-${arch}.${ext}
+dmg:
+  # drag-to-install layout over the instruction background
+  background: build/dmg-bg.png
+  iconSize: 112
+  contents:
+    - x: 150
+      y: 205
+      type: file
+    - x: 410
+      y: 205
+      type: link
+      path: /Applications
+  window:
+    width: 560
+    height: 470
+win:
+  target:
+    - nsis
+  artifactName: ${productName}-${version}-${arch}.${ext}
+linux:
+  target:
+    - AppImage
+  category: Development
+  artifactName: ${productName}-${version}-${arch}.${ext}
