@@ -18,12 +18,6 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        # Windows has never been verified by hand and better-sqlite3 needs
-        # node-gyp there; don't let it block a PR until it has proven stable.
-        include:
-          - os: windows-latest
-            experimental: true
-    continue-on-error: ${{ matrix.experimental || false }}
     steps:
       - uses: actions/checkout@v4
 
