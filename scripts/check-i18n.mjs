@@ -11,9 +11,12 @@
  * Comments may contain Chinese; only code is checked.
  */
 import { readdirSync, readFileSync, statSync } from "node:fs";
-import { join, relative } from "node:path";
+import { join, relative, sep } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const ROOT = new URL("..", import.meta.url).pathname;
+// fileURLToPath, not URL.pathname: on Windows the latter yields "/D:/..." and
+// join() then produces "D:\\D:\\...".
+const ROOT = fileURLToPath(new URL("..", import.meta.url));
 const SRC = join(ROOT, "src");
 /** The dictionary itself, plus tests whose assertions are literal translations. */
 const ALLOWED = [/^src\/shared\/i18n\/zh-CN\.ts$/, /\.test\.tsx?$/];
@@ -89,7 +92,7 @@ function walk(dir, files = []) {
 
 const offenders = [];
 for (const file of walk(SRC)) {
-  const rel = relative(ROOT, file);
+  const rel = relative(ROOT, file).split(sep).join("/"); // match ALLOWED on any OS
   if (ALLOWED.some((re) => re.test(rel))) continue;
   const raw = readFileSync(file, "utf8");
   const rawLines = raw.split("\n");
