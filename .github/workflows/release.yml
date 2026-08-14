@@ -30,7 +30,11 @@ jobs:
       # gate the release on the same checks as CI
       - run: npm run verify
 
-      - name: Build dmg (arm64 + x64, ad-hoc signed)
+      # electron-builder packages out/, it does not produce it
+      - name: Build main / preload / renderer
+        run: npm run build
+
+      - name: Package dmg (arm64 + x64, ad-hoc signed)
         env:
           # no Developer ID certificate: electron-builder falls back to an
           # ad-hoc deep sign via scripts/adhoc-sign.cjs
